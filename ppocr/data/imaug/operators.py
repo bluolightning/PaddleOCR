@@ -150,7 +150,7 @@ class Pad(object):
         if self.size:
             resize_h2, resize_w2 = self.size
             assert (
-                img_h < resize_h2 and img_w < resize_w2
+                img_h <= resize_h2 and img_w <= resize_w2
             ), "(h, w) of target size should be greater than (img_h, img_w)"
         else:
             resize_h2 = max(
@@ -168,7 +168,7 @@ class Pad(object):
             0,
             resize_w2 - img_w,
             cv2.BORDER_CONSTANT,
-            value=0,
+            value=255,
         )
         data["image"] = img
         return data
